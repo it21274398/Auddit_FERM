@@ -128,7 +128,7 @@ const ClientsSection = () => {
       id="clients"
       sx={{
         position: "relative",
-        py: { xs: 10, md: 15 },
+        py: { xs: 5, md: 10 },
         background: "linear-gradient(to bottom, #a6ffa64e 0%, #ffffffff 50%, #a6ffa64e 100%)",
         overflow: "hidden",
       }}
@@ -418,90 +418,7 @@ const ClientsSection = () => {
           </Box>
         </motion.div>
 
-        {/* Industry Distribution */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <Card
-            sx={{
-              borderRadius: 4,
-              border: "1px solid rgba(0,0,0,0.05)",
-              backgroundColor: "white",
-              boxShadow: "0 20px 60px rgba(0, 0, 0, 0.05)",
-              overflow: "hidden",
-            }}
-          >
-            <CardContent sx={{ p: { xs: 4, md: 6 } }}>
-              <Grid container spacing={4} alignItems="center">
-                <Grid item xs={12} md={6}>
-                  <Typography variant="h4" fontWeight={800} mb={3}>
-                    Industry Distribution
-                  </Typography>
-                  <Typography color="text.secondary" mb={4}>
-                    Our expertise spans across multiple sectors, providing tailored
-                    financial solutions for diverse business needs.
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    endIcon={<TrendingUp />}
-                    sx={{
-                      px: 4,
-                      py: 1.5,
-                      borderRadius: 3,
-                      fontWeight: 600,
-                      boxShadow: "0 8px 24px rgba(76, 217, 100, 0.3)",
-                    }}
-                  >
-                    View Case Studies
-                  </Button>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Stack spacing={3}>
-                    {industryStats.map((stat, index) => (
-                      <Box key={index}>
-                        <Box
-                          sx={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            mb: 1,
-                          }}
-                        >
-                          <Typography fontWeight={600}>{stat.label}</Typography>
-                          <Typography fontWeight={700} color="primary.main">
-                            {stat.value}
-                          </Typography>
-                        </Box>
-                        <Box
-                          sx={{
-                            width: "100%",
-                            height: 8,
-                            backgroundColor: "rgba(0,0,0,0.05)",
-                            borderRadius: 4,
-                            overflow: "hidden",
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              width: stat.value,
-                              height: "100%",
-                              background: `linear-gradient(90deg, #4CD964, #4A90E2)`,
-                              borderRadius: 4,
-                            }}
-                          />
-                        </Box>
-                      </Box>
-                    ))}
-                  </Stack>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </motion.div>
+        
       </Container>
     </Box>
   );

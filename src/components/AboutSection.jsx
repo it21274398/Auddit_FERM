@@ -1,7 +1,7 @@
-import { 
-  Box, 
-  Container, 
-  Typography, 
+import {
+  Box,
+  Container,
+  Typography,
   Grid,
   Card,
   CardContent,
@@ -13,7 +13,7 @@ import {
   Avatar,
   AvatarGroup
 } from "@mui/material";
-import { 
+import {
 
   Visibility,
   Handshake,
@@ -36,8 +36,8 @@ const AboutSection = () => {
       id="about"
       sx={{
         position: "relative",
-        py: { xs: 10, md: 15 },
-       background: "linear-gradient(to bottom, #a6ffa64e 0%, #ffffffff 50%, #a6ffa64e 100%)",
+        py: { xs: 5, md: 10 }, 
+        background: "linear-gradient(to bottom, #a6ffa64e 0%, #ffffffff 50%, #a6ffa64e 100%)",
         overflow: "hidden",
       }}
     >
@@ -74,8 +74,8 @@ const AboutSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Box textAlign="center" mb={{ xs: 6, md: 10 }}>
-           
-            
+
+
             <Typography
               variant="h2"
               fontWeight={800}
@@ -90,7 +90,7 @@ const AboutSection = () => {
             >
               Building Trust Through Excellence Since year
             </Typography>
-            
+
             <Typography
               variant="h6"
               color="text.secondary"
@@ -102,8 +102,8 @@ const AboutSection = () => {
                 fontSize: "1.1rem",
               }}
             >
-              SML Business Solutions is a leading professional services firm providing comprehensive 
-              audit, accounting, taxation, and strategic business advisory services to organizations 
+              SML Business Solutions is a leading professional services firm providing comprehensive
+              audit, accounting, taxation, and strategic business advisory services to organizations
               across Sri Lanka and beyond.
             </Typography>
           </Box>
@@ -151,8 +151,8 @@ const AboutSection = () => {
                         color="text.secondary"
                         sx={{ fontSize: "1.1rem", lineHeight: 1.8, pl: 7 }}
                       >
-                        To deliver accurate, reliable, and compliant business solutions that 
-                        empower our clients to achieve sustainable growth, operational excellence, 
+                        To deliver accurate, reliable, and compliant business solutions that
+                        empower our clients to achieve sustainable growth, operational excellence,
                         and long-term financial confidence.
                       </Typography>
                     </Box>
@@ -178,8 +178,8 @@ const AboutSection = () => {
                         color="text.secondary"
                         sx={{ fontSize: "1.1rem", lineHeight: 1.8, pl: 7 }}
                       >
-                        To be the most trusted professional services partner in the region, 
-                        recognized for unwavering integrity, innovative solutions, and 
+                        To be the most trusted professional services partner in the region,
+                        recognized for unwavering integrity, innovative solutions, and
                         transformative client relationships that drive lasting success.
                       </Typography>
                     </Box>
@@ -232,11 +232,11 @@ const AboutSection = () => {
             >
               <Box sx={{ pl: { xs: 0, md: 4 } }}>
                 {/* Stats Cards */}
-                <Box sx={{ 
-                  display: 'grid', 
-                  gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, 
-                  gap: 3, 
-                  mb: 5 
+                <Box sx={{
+                  display: 'grid',
+                  gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                  gap: 3,
+                  mb: 5
                 }}>
                   {[
                     { icon: <CalendarToday />, value: "15+", label: "Years Experience", color: "#4CD964" },
@@ -317,7 +317,7 @@ const AboutSection = () => {
                     </Box>
                   </Box>
                   <Typography color="text.secondary" sx={{ mb: 3, lineHeight: 1.7 }}>
-                    Our diverse team of experts combines decades of industry experience 
+                    Our diverse team of experts combines decades of industry experience
                     with cutting-edge knowledge to deliver exceptional results for our clients.
                   </Typography>
                   <Button
@@ -339,7 +339,7 @@ const AboutSection = () => {
 
                 {/* Certifications */}
                 <Box sx={{ mt: 4, display: "flex", alignItems: "center", gap: 2, flexWrap: "wrap" }}>
-                  
+
                   <Chip
                     label="ICASL Registered"
                     sx={{

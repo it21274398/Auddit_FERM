@@ -160,13 +160,16 @@ const Navbar = () => {
         position="fixed"
         elevation={scrolled ? 4 : 0}
         sx={{
-          backgroundColor: scrolled ? "rgba(255, 255, 255, 0.98)" : "white",
-          backdropFilter: "blur(10px)",
+          background: scrolled
+            ? "linear-gradient(135deg, #b6beb6a4 0%, #aeb9af9c 100%)" : "linear-gradient(135deg, #b6beb6a4 0%, #aeb9af9c 100%)",
+
+          backdropFilter: "blur(50px)",
           borderBottom: scrolled ? "none" : "1px solid rgba(0,0,0,0.05)",
-          transition: "all 0.3s ease",
+          transition: "all 0.35s ease",
           py: scrolled ? 0.5 : 1,
         }}
       >
+
         <Container maxWidth="xl">
           <Toolbar
             sx={{
@@ -186,7 +189,7 @@ const Navbar = () => {
                   display: "flex",
                   alignItems: "center",
                   gap: 2,
-                  
+
                   cursor: "pointer",
                 }}
                 onClick={() => scrollToSection("home")}
@@ -196,11 +199,11 @@ const Navbar = () => {
                   src="/logo.png"
                   alt="SML Business Solutions Logo"
                   sx={{
-                    border:"1px solid #6d786d75",
-                    boxShadow: "0 5px 10px rgba(81, 75, 75, 0.11)",
-                    borderRadius:50,
-                    height: 80,
-                    width: 80,
+                    border: "1px solid #6d786d75",
+                    boxShadow: "0 2px 5px rgba(11, 11, 11, 0.35)",
+                    borderRadius: 3,
+                    height: 70,
+                    width: 70,
                     mr: 1.5,
                   }}
                 />
@@ -260,8 +263,8 @@ const Navbar = () => {
                         px: 2,
                         py: 1,
                         "&:hover": {
-                          backgroundColor: "rgba(89, 236, 113, 0.43)",
-                          color: "rgba(48, 151, 65, 1)",
+                          backgroundColor: "rgba(0, 255, 42, 0.43)",
+                          color: "rgba(0, 0, 0, 1)",
                         },
                       }}
                     >
@@ -289,7 +292,7 @@ const Navbar = () => {
                       borderRadius: 3,
                       fontWeight: 600,
                       textTransform: "none",
-                      boxShadow: "0 4px 12px rgba(76, 217, 100, 0.3)",
+                      boxShadow: "0 4px 12px rgba(50, 49, 49, 0.41)",
                       "&:hover": {
                         boxShadow: "0 6px 20px rgba(76, 217, 100, 0.4)",
                       },

@@ -9,7 +9,8 @@ const HeroSection = () => {
       sx={{
         position: "relative",
         overflow: "hidden",
-        background: "linear-gradient(to bottom, #a6ffa64e 0%, #b8dfb84e 50%, #a6ffa64e 100%)",
+background: "linear-gradient(to right, #56ab2fdd 0%, #b6f569ff 50%)"
+,
         pt: { xs: 12, md: 10 },
         pb: { xs: 10, md: 15 },
         borderBottom: "1px solid rgba(0,0,0,0.05)",
@@ -98,7 +99,7 @@ const HeroSection = () => {
                 {[ "Real-time Financial Insights","Book Keeping", "Risk Assessment & Mitigation","Trusted by 180+ Businesses"].map(
                   (item, index) => (
                     <Box key={index} display="flex" alignItems="center" gap={1.5}>
-                      <CheckCircle sx={{ color: "primary.main", fontSize: 20 }} />
+                      <CheckCircle sx={{ color: "#000000ff", fontSize: 20 }} />
                       <Typography variant="body1" color="text.primary">
                         {item}
                       </Typography>
@@ -121,9 +122,9 @@ const HeroSection = () => {
                       borderRadius: 3,
                       fontSize: "1rem",
                       fontWeight: 600,
-                      boxShadow: "0 8px 24px rgba(76, 217, 100, 0.3)",
+                      boxShadow: "0 8px 24px rgba(51, 56, 52, 0.3)",
                       "&:hover": {
-                        boxShadow: "0 12px 32px rgba(76, 217, 100, 0.4)",
+                        boxShadow: "0 12px 32px rgba(38, 198, 65, 0.4)",
                       },
                     }}
                     onClick={() =>

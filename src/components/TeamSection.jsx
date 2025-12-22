@@ -71,8 +71,8 @@ const TeamSection = () => {
       id="team"
       sx={{
         position: "relative",
-        py: { xs: 12, md: 15 },
-        backgroundColor: "#fafafa",
+        py: { xs: 5, md: 10 },
+          background: "linear-gradient(to bottom, #a6ffa64e 0%, #ffffffff 50%, #a6ffa64e 100%)",
         overflow: "hidden",
         '&::before': {
           content: '""',

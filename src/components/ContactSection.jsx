@@ -32,7 +32,7 @@ const ContactSection = () => {
       sx={{
         position: "relative",
         py: { xs: 10, md: 15 },
-      background: "linear-gradient(to bottom, #a6ffa64e 0%, #ffffffff 50%, #a6ffa64e 100%)",
+        background: "linear-gradient(to bottom, #a6ffa64e 0%, #ffffffff 50%, #a6ffa64e 100%)",
         overflow: "hidden",
       }}
     >
@@ -59,8 +59,8 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Box textAlign="center">
-            
-            
+
+
             <Typography
               variant="h2"
               fontWeight={800}
@@ -113,48 +113,48 @@ const ContactSection = () => {
             border: "1px solid rgba(0,0,0,0.05)",
           }}
         >{/* FULL MAP - Enhanced */}
-<iframe
-  title="Google Map - K.T. Subasinghe & Co"
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31688.93204141378!2d79.993!3d7.027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x47d450f846bffa0c!2sK.T.%20Subasinghe%20%26%20Co!5e0!3m2!1sen!2slk!4v1710000000000"
-  style={{
-    width: "100%",
-    height: "100%",
-    border: 0,
-    filter: "saturate(1.2) contrast(1.1)",
-  }}
-  loading="lazy"
-  referrerPolicy="no-referrer-when-downgrade"
-/>
+          <iframe
+            title="Google Map - K.T. Subasinghe & Co"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31688.93204141378!2d79.993!3d7.027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x47d450f846bffa0c!2sK.T.%20Subasinghe%20%26%20Co!5e0!3m2!1sen!2slk!4v1710000000000"
+            style={{
+              width: "100%",
+              height: "100%",
+              border: 0,
+              filter: "saturate(1.2) contrast(1.1)",
+            }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
 
           {/* RIGHT BLUR OVERLAY - Enhanced */}
           <Box
-  sx={{
-    position: "absolute",
-    top: 0,
-    right: 0,
+            sx={{
+              position: "absolute",
+              top: 0,
+              right: 0,
 
-    // ✅ ONLY right side
-    width: { xs: "100%", md: "40%" },
-    height: "100%",
+              // ✅ ONLY right side
+              width: { xs: "100%", md: "40%" },
+              height: "100%",
 
-    // ✅ blur only inside this box
-    backdropFilter: "blur(12px)",
-    WebkitBackdropFilter: "blur(12px)",
+              // ✅ blur only inside this box
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
 
-    // ✅ gradient: transparent → frosted glass
-    background:
-      "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 100%)",
+              // ✅ gradient: transparent → frosted glass
+              background:
+                "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 100%)",
 
-    display: "flex",
-    alignItems: "center",
+              display: "flex",
+              alignItems: "center",
 
-    // optional depth
-    boxShadow: "-20px 0 60px rgba(0, 0, 0, 0.1)",
-  }}
->
+              // optional depth
+              boxShadow: "-20px 0 60px rgba(0, 0, 0, 0.1)",
+            }}
+          >
 
             {/* CONTACT CONTENT - Enhanced */}
-            <Box sx={{ px: { xs: 4, md: 6 }, width: "100%"}}>
+            <Box sx={{ px: { xs: 4, md: 6 }, width: "100%" }}>
               <Typography
                 variant="h4"
                 fontWeight={800}
@@ -226,7 +226,7 @@ const ContactSection = () => {
                   </Box>
                 </Box>
 
-                
+
 
                 {/* EMAIL */}
                 <Box
@@ -325,7 +325,7 @@ const ContactSection = () => {
                 </Box>
               </Box>
 
-         
+
 
               {/* SOCIAL ICONS - Enhanced */}
               <Box>
@@ -335,8 +335,8 @@ const ContactSection = () => {
                 <Box display="flex" gap={1}>
                   {[
                     { icon: <Facebook />, color: "#1877F2", href: "https://facebook.com/" },
-                    { icon:  <WhatsApp />, color: "#50e440ff",  href:"https://wa.me/94112925437" },
-                  
+                    { icon: <WhatsApp />, color: "#50e440ff", href: "https://wa.me/94112925437" },
+
                   ].map((social, idx) => (
                     <IconButton
                       key={idx}
@@ -391,7 +391,7 @@ const ContactSection = () => {
         </Box>
       </motion.div>
 
-     
+
     </Box>
   );
 };
