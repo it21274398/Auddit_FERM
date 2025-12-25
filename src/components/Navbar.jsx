@@ -83,7 +83,7 @@ const Navbar = () => {
 
   // Enhanced mobile drawer
   const drawer = (
-    <Box sx={{ 
+    <Box sx={{
       height: '100%',
       background: 'linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%)',
       display: 'flex',
@@ -91,7 +91,7 @@ const Navbar = () => {
     }}>
       {/* Drawer Header */}
       <Box sx={{
-        background: 'linear-gradient(135deg, #263238 0%, #b6f569ff 100%)',
+        background: 'linear-gradient(135deg, #31611cdd 0%, #b6f569ff 100%)',
         p: 3,
         pb: 2,
         position: 'relative',
@@ -111,12 +111,12 @@ const Navbar = () => {
         >
           <Close />
         </IconButton>
-        
-        <Box sx={{ 
-          display: 'flex', 
-          alignItems: 'center', 
+
+        <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
           gap: 2,
-          mb: 2 
+          mb: 2
         }}>
           <Box
             component="img"
@@ -139,7 +139,7 @@ const Navbar = () => {
             </Typography>
           </Box>
         </Box>
-        
+
         <Chip
           label="24/7 Support Available"
           size="small"
@@ -173,7 +173,7 @@ const Navbar = () => {
         >
           Call Now: +94 112 925 437
         </Button>
-        
+
         <Button
           href="mailto:info@smlbusiness.com"
           fullWidth
@@ -196,8 +196,8 @@ const Navbar = () => {
       </Box>
 
       {/* Navigation Items */}
-      <List sx={{ 
-        px: 2, 
+      <List sx={{
+        px: 2,
         pt: 2,
         flex: 1,
         overflow: 'auto',
@@ -207,13 +207,13 @@ const Navbar = () => {
             key={item.id}
             whileTap={{ scale: 0.98 }}
           >
-            <ListItem 
-              disablePadding 
-              sx={{ 
+            <ListItem
+              disablePadding
+              sx={{
                 mb: 1,
                 borderRadius: 2,
                 overflow: 'hidden',
-                background: item.highlight 
+                background: item.highlight
                   ? 'linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(74, 144, 226, 0.05) 100%)'
                   : 'transparent',
               }}
@@ -228,15 +228,15 @@ const Navbar = () => {
                   px: 3,
                   borderRadius: 2,
                   '&:hover': {
-                    background: item.highlight 
+                    background: item.highlight
                       ? 'linear-gradient(135deg, rgba(74, 144, 226, 0.2) 0%, rgba(74, 144, 226, 0.15) 100%)'
                       : 'rgba(0,0,0,0.04)',
                   }
                 }}
               >
-                <Box sx={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
+                <Box sx={{
+                  display: 'flex',
+                  alignItems: 'center',
                   width: '100%',
                   justifyContent: 'space-between',
                 }}>
@@ -259,22 +259,22 @@ const Navbar = () => {
                       }
                     />
                   </Box>
-                  
+
                   {item.badge && (
                     <Chip
                       label={item.badge}
                       size="small"
                       color="error"
-                      sx={{ 
+                      sx={{
                         fontWeight: 600,
                         fontSize: '0.7rem',
                         height: 20,
                       }}
                     />
                   )}
-                  
+
                   {!item.badge && (
-                    <ArrowRight sx={{ 
+                    <ArrowRight sx={{
                       color: item.highlight ? 'primary.main' : 'text.secondary',
                       opacity: 0.7,
                       fontSize: 18,
@@ -452,7 +452,7 @@ const Navbar = () => {
             {isMobile && (
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 {/* Quick Contact Badge */}
-                <Badge
+                {/* <Badge
                   color="error"
                   variant="dot"
                   overlap="circular"
@@ -479,7 +479,7 @@ const Navbar = () => {
                   >
                     <Phone />
                   </IconButton>
-                </Badge>
+                </Badge> */}
 
                 {/* Menu Button */}
                 <motion.div
@@ -488,7 +488,7 @@ const Navbar = () => {
                   <IconButton
                     onClick={handleDrawerToggle}
                     sx={{
-                      background: 'linear-gradient(135deg, #263238 0%, #4A90E2 100%)',
+                      background: 'linear-gradient(135deg, #56ab2fdd 0%, #b6f569ff 100%)',
                       color: 'white',
                       borderRadius: 2,
                       width: 44,
