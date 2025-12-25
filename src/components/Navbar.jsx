@@ -11,19 +11,20 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  useScrollTrigger,
   useTheme,
   useMediaQuery,
+  Badge,
+  Chip,
 } from "@mui/material";
-import { Menu as MenuIcon, Phone, Email, ArrowRight } from "@mui/icons-material";
+import { Menu as MenuIcon, Phone, Email, ArrowRight, Close } from "@mui/icons-material";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const scrollToSection = (id, duration = 1200) => {
   const target = document.getElementById(id);
   if (!target) return;
 
-  const offset = 80; // navbar height
+  const offset = 80;
   const startPosition = window.pageYOffset;
   const targetPosition =
     target.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -62,7 +63,6 @@ const Navbar = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  // Scroll effect for navbar
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -72,85 +72,235 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { label: "Home", id: "home" },
-    { label: "Team", id: "team" },
-    { label: "Services", id: "services" },
-    { label: "Why us", id: "why-us" },
-    { label: "Clients", id: "clients" },
-    { label: "About", id: "about" },
-    { label: "Contact us", id: "contact" },
+    { label: "Home", id: "home", icon: "🏠" },
+    { label: "Team", id: "team", icon: "👥" },
+    { label: "Services", id: "services", icon: "🛠️" },
+    { label: "Why us", id: "why-us", icon: "⭐", badge: "Hot" },
+    { label: "Clients", id: "clients", icon: "🤝" },
+    { label: "About", id: "about", icon: "ℹ️" },
+    { label: "Contact us", id: "contact", icon: "📞", highlight: true },
   ];
 
+  // Enhanced mobile drawer
   const drawer = (
-    <Box sx={{ textAlign: "center", pt: 2 }}>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          mb: 3,
-          cursor: "pointer",
-        }}
-        onClick={() => {
-          scrollToSection("home");
-          setMobileOpen(false);
-        }}
-      >
-
-        <Typography variant="h6" fontWeight={700} color="primary">
-          SML Business
-        </Typography>
+    <Box sx={{ 
+      height: '100%',
+      background: 'linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%)',
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
+      {/* Drawer Header */}
+      <Box sx={{
+        background: 'linear-gradient(135deg, #263238 0%, #b6f569ff 100%)',
+        p: 3,
+        pb: 2,
+        position: 'relative',
+      }}>
+        <IconButton
+          onClick={() => setMobileOpen(false)}
+          sx={{
+            position: 'absolute',
+            right: 16,
+            top: 16,
+            color: 'white',
+            background: 'rgba(255,255,255,0.1)',
+            '&:hover': {
+              background: 'rgba(255,255,255,0.2)',
+            }
+          }}
+        >
+          <Close />
+        </IconButton>
+        
+        <Box sx={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: 2,
+          mb: 2 
+        }}>
+          <Box
+            component="img"
+            src="/logo.png"
+            alt="Logo"
+            sx={{
+              border: "2px solid rgba(255,255,255,0.3)",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+              borderRadius: 3,
+              height: 60,
+              width: 60,
+            }}
+          />
+          <Box>
+            <Typography variant="h6" fontWeight={800} color="white">
+              SML Business
+            </Typography>
+            <Typography variant="caption" color="rgba(255,255,255,0.8)">
+              Book keeping & Financial Solutions
+            </Typography>
+          </Box>
+        </Box>
+        
+        <Chip
+          label="24/7 Support Available"
+          size="small"
+          sx={{
+            background: 'rgba(255,255,255,0.2)',
+            color: 'white',
+            fontWeight: 600,
+            backdropFilter: 'blur(10px)',
+          }}
+        />
       </Box>
-      <List>
+
+      {/* Contact Info */}
+      <Box sx={{ p: 3, pb: 0 }}>
+        <Button
+          href="tel:+94112925437"
+          fullWidth
+          variant="contained"
+          startIcon={<Phone />}
+          sx={{
+            background: 'linear-gradient(135deg, #00C853 0%, #4CAF50 100%)',
+            borderRadius: 3,
+            py: 1.5,
+            mb: 2,
+            fontWeight: 600,
+            boxShadow: '0 4px 15px rgba(76, 175, 80, 0.3)',
+            '&:hover': {
+              boxShadow: '0 6px 20px rgba(76, 175, 80, 0.4)',
+            }
+          }}
+        >
+          Call Now: +94 112 925 437
+        </Button>
+        
+        <Button
+          href="mailto:info@smlbusiness.com"
+          fullWidth
+          variant="outlined"
+          startIcon={<Email />}
+          sx={{
+            borderColor: 'primary.main',
+            borderRadius: 3,
+            py: 1.5,
+            color: 'primary.main',
+            fontWeight: 500,
+            '&:hover': {
+              borderColor: 'primary.dark',
+              background: 'rgba(74, 144, 226, 0.05)',
+            }
+          }}
+        >
+          Send Email
+        </Button>
+      </Box>
+
+      {/* Navigation Items */}
+      <List sx={{ 
+        px: 2, 
+        pt: 2,
+        flex: 1,
+        overflow: 'auto',
+      }}>
         {navItems.map((item) => (
-          <ListItem key={item.id} disablePadding>
-            <ListItemButton
-              sx={{ textAlign: "center", py: 1.5 }}
-              onClick={() => {
-                scrollToSection(item.id);
-                setMobileOpen(false);
+          <motion.div
+            key={item.id}
+            whileTap={{ scale: 0.98 }}
+          >
+            <ListItem 
+              disablePadding 
+              sx={{ 
+                mb: 1,
+                borderRadius: 2,
+                overflow: 'hidden',
+                background: item.highlight 
+                  ? 'linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(74, 144, 226, 0.05) 100%)'
+                  : 'transparent',
               }}
             >
-              <ListItemText
-                primary={item.label}
-                primaryTypographyProps={{
-                  fontWeight: 500,
-                  fontSize: "1rem",
+              <ListItemButton
+                onClick={() => {
+                  scrollToSection(item.id);
+                  setMobileOpen(false);
                 }}
-              />
-            </ListItemButton>
-          </ListItem>
+                sx={{
+                  py: 2,
+                  px: 3,
+                  borderRadius: 2,
+                  '&:hover': {
+                    background: item.highlight 
+                      ? 'linear-gradient(135deg, rgba(74, 144, 226, 0.2) 0%, rgba(74, 144, 226, 0.15) 100%)'
+                      : 'rgba(0,0,0,0.04)',
+                  }
+                }}
+              >
+                <Box sx={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  width: '100%',
+                  justifyContent: 'space-between',
+                }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                    <Typography variant="h6" sx={{ opacity: 0.8 }}>
+                      {item.icon}
+                    </Typography>
+                    <ListItemText
+                      primary={
+                        <Typography fontWeight={item.highlight ? 700 : 600}>
+                          {item.label}
+                        </Typography>
+                      }
+                      secondary={
+                        item.id === 'contact' ? (
+                          <Typography variant="caption" color="primary">
+                            Get free consultation
+                          </Typography>
+                        ) : null
+                      }
+                    />
+                  </Box>
+                  
+                  {item.badge && (
+                    <Chip
+                      label={item.badge}
+                      size="small"
+                      color="error"
+                      sx={{ 
+                        fontWeight: 600,
+                        fontSize: '0.7rem',
+                        height: 20,
+                      }}
+                    />
+                  )}
+                  
+                  {!item.badge && (
+                    <ArrowRight sx={{ 
+                      color: item.highlight ? 'primary.main' : 'text.secondary',
+                      opacity: 0.7,
+                      fontSize: 18,
+                    }} />
+                  )}
+                </Box>
+              </ListItemButton>
+            </ListItem>
+          </motion.div>
         ))}
-        <ListItem disablePadding>
-          <ListItemButton
-            sx={{
-              textAlign: "center",
-              py: 1.5,
-              backgroundColor: "primary.main",
-              color: "white",
-              mx: 2,
-              borderRadius: 2,
-              mt: 2,
-              "&:hover": {
-                backgroundColor: "primary.dark",
-              },
-            }}
-            onClick={() => {
-              scrollToSection("contact");
-              setMobileOpen(false);
-            }}
-          >
-            <ListItemText
-              primary="Contact Us"
-              primaryTypographyProps={{
-                fontWeight: 600,
-                fontSize: "1rem",
-              }}
-            />
-            <ArrowRight sx={{ ml: 1 }} />
-          </ListItemButton>
-        </ListItem>
       </List>
+
+      {/* Footer */}
+      <Box sx={{
+        p: 3,
+        pt: 2,
+        borderTop: '1px solid rgba(0,0,0,0.05)',
+        background: 'rgba(255,255,255,0.5)',
+      }}>
+        <Typography variant="caption" color="text.secondary" align="center">
+          © {new Date().getFullYear()} SML Business Solutions
+        </Typography>
+        <Typography variant="caption" color="text.secondary" align="center" display="block">
+          All rights reserved
+        </Typography>
+      </Box>
     </Box>
   );
 
@@ -161,15 +311,14 @@ const Navbar = () => {
         elevation={scrolled ? 4 : 0}
         sx={{
           background: scrolled
-            ? "linear-gradient(135deg, #b6beb6a4 0%, #aeb9af9c 100%)" : "linear-gradient(135deg, #b6beb6a4 0%, #aeb9af9c 100%)",
-
+            ? "linear-gradient(135deg, #b6beb6a4 0%, #aeb9af9c 100%)"
+            : "linear-gradient(135deg, #b6beb6a4 0%, #aeb9af9c 100%)",
           backdropFilter: "blur(50px)",
           borderBottom: scrolled ? "none" : "1px solid rgba(0,0,0,0.05)",
           transition: "all 0.35s ease",
           py: scrolled ? 0.5 : 1,
         }}
       >
-
         <Container maxWidth="xl">
           <Toolbar
             sx={{
@@ -178,7 +327,7 @@ const Navbar = () => {
               px: { xs: 0, md: 2 },
             }}
           >
-            {/* Logo Section */}
+            {/* Logo Section - Same as before */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -189,7 +338,6 @@ const Navbar = () => {
                   display: "flex",
                   alignItems: "center",
                   gap: 2,
-
                   cursor: "pointer",
                 }}
                 onClick={() => scrollToSection("home")}
@@ -207,8 +355,6 @@ const Navbar = () => {
                     mr: 1.5,
                   }}
                 />
-
-
                 <Box>
                   <Typography
                     variant="h6"
@@ -236,7 +382,7 @@ const Navbar = () => {
               </Box>
             </motion.div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Unchanged */}
             {!isMobile && (
               <Box
                 sx={{
@@ -273,7 +419,6 @@ const Navbar = () => {
                   </motion.div>
                 ))}
 
-                {/* Contact CTA */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -284,7 +429,6 @@ const Navbar = () => {
                     variant="contained"
                     color="primary"
                     startIcon={<Phone sx={{ fontSize: 16 }} />}
-
                     sx={{
                       ml: 2,
                       px: 3,
@@ -304,50 +448,92 @@ const Navbar = () => {
               </Box>
             )}
 
-            {/* Mobile Menu Button */}
+            {/* Enhanced Mobile Menu Button */}
             {isMobile && (
-              <IconButton
-                color="primary"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{
-                  border: "1px solid",
-                  borderColor: "divider",
-                  borderRadius: 2,
-                }}
-              >
-                <MenuIcon />
-              </IconButton>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                {/* Quick Contact Badge */}
+                <Badge
+                  color="error"
+                  variant="dot"
+                  overlap="circular"
+                  sx={{ 
+                    display: scrolled ? 'flex' : 'none',
+                    animation: 'pulse 2s infinite',
+                    '@keyframes pulse': {
+                      '0%': { opacity: 1 },
+                      '50%': { opacity: 0.5 },
+                      '100%': { opacity: 1 },
+                    }
+                  }}
+                >
+                  <IconButton
+                    href="tel:+94112925437"
+                    sx={{
+                      background: 'linear-gradient(135deg, #00C853 0%, #4CAF50 100%)',
+                      color: 'white',
+                      boxShadow: '0 3px 10px rgba(76, 175, 80, 0.3)',
+                      '&:hover': {
+                        background: 'linear-gradient(135deg, #00E676 0%, #66BB6A 100%)',
+                      }
+                    }}
+                  >
+                    <Phone />
+                  </IconButton>
+                </Badge>
+
+                {/* Menu Button */}
+                <motion.div
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <IconButton
+                    onClick={handleDrawerToggle}
+                    sx={{
+                      background: 'linear-gradient(135deg, #263238 0%, #4A90E2 100%)',
+                      color: 'white',
+                      borderRadius: 2,
+                      width: 44,
+                      height: 44,
+                      boxShadow: '0 4px 12px rgba(38, 50, 56, 0.3)',
+                      '&:hover': {
+                        background: 'linear-gradient(135deg, #37474F 0%, #5C9CE6 100%)',
+                      }
+                    }}
+                  >
+                    {mobileOpen ? <Close /> : <MenuIcon />}
+                  </IconButton>
+                </motion.div>
+              </Box>
             )}
           </Toolbar>
         </Container>
-
-
       </AppBar>
 
-      {/* Mobile Drawer */}
+      {/* Enhanced Mobile Drawer */}
       <Drawer
         variant="temporary"
         anchor="right"
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better mobile performance
+          keepMounted: true,
         }}
         sx={{
           display: { xs: "block", md: "none" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            width: 280,
-            borderLeft: "1px solid rgba(0,0,0,0.05)",
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
+            width: 320,
+            maxWidth: '85vw',
+            borderLeft: 'none',
+            boxShadow: '-20px 0 60px rgba(0,0,0,0.3)',
           },
         }}
       >
-        {drawer}
+        <AnimatePresence>
+          {mobileOpen && drawer}
+        </AnimatePresence>
       </Drawer>
 
-      {/* Spacer for fixed navbar */}
+      {/* Spacer */}
       <Toolbar sx={{ minHeight: { xs: 70, md: 80 } }} />
       {!isMobile && <Box sx={{ height: scrolled ? 0 : 24 }} />}
     </>
