@@ -20,7 +20,7 @@ function App() {
       <ClientsSection />
       <AboutSection />
       <ContactSection />
-      {/* <BusinessHours /> */}
+      <BusinessHours />
       <Footer />
     </>
   );
