@@ -105,7 +105,7 @@ const ContactSection = () => {
           sx={{
             position: "relative",
             width: "90%",
-            height: { xs: 500, md: 740 },
+            height: { xs: 1200, md: 740 },
             overflow: "hidden",
             borderRadius: { xs: 0, md: 6 },
             mx: "auto",
@@ -132,29 +132,46 @@ const ContactSection = () => {
               position: "absolute",
               top: 0,
               right: 0,
-
-              // ✅ ONLY right side
               width: { xs: "100%", md: "40%" },
               height: "100%",
-
-              // ✅ blur only inside this box
-              backdropFilter: "blur(12px)",
-              WebkitBackdropFilter: "blur(12px)",
-
-              // ✅ gradient: transparent → frosted glass
-              background:
-                "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 100%)",
-
+              // ✅ Mobile: Full width but with bottom placement
+              ...(isMobile && {
+                top: "auto",
+                bottom: 0,
+                height: "auto",
+                maxHeight: "60%",
+                borderRadius: "20px 20px 0 0",
+                backdropFilter: "blur(10px)",
+                background: "rgba(255, 255, 255, 0.95)",
+                boxShadow: "0 -10px 40px rgba(0, 0, 0, 0.15)",
+              }),
+              // ✅ Desktop: Right side overlay (your original design)
+              ...(!isMobile && {
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                background: "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 100%)",
+                boxShadow: "-20px 0 60px rgba(0, 0, 0, 0.1)",
+              }),
               display: "flex",
               alignItems: "center",
-
-              // optional depth
-              boxShadow: "-20px 0 60px rgba(0, 0, 0, 0.1)",
             }}
           >
 
             {/* CONTACT CONTENT - Enhanced */}
-            <Box sx={{ px: { xs: 4, md: 6 }, width: "100%" }}>
+            <Box sx={{ 
+              px: { xs: 4, md: 6 }, 
+              width: "100%",
+              // ✅ Mobile: Adjust padding for bottom sheet
+              ...(isMobile && {
+                py: 4,
+                maxHeight: "100%",
+                overflowY: "auto",
+              }),
+              // ✅ Desktop: Center vertically
+              ...(!isMobile && {
+                py: 0,
+              }),
+            }}>
               <Typography
                 variant="h4"
                 fontWeight={800}
@@ -164,6 +181,7 @@ const ContactSection = () => {
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   mb: 1,
+                  fontSize: { xs: "1.75rem", md: "2.125rem" },
                 }}
               >
                 Contact Information
@@ -174,7 +192,13 @@ const ContactSection = () => {
               </Typography>
 
               {/* CONTACT ITEMS - Enhanced */}
-              <Box sx={{ mb: 4 }}>
+              <Box sx={{ 
+                mb: 4,
+                // ✅ Mobile: Slightly reduce spacing
+                ...(isMobile && {
+                  mb: 3,
+                }),
+              }}>
                 {/* PHONE */}
                 <Box
                   sx={{
@@ -189,6 +213,11 @@ const ContactSection = () => {
                       backgroundColor: "rgba(76, 217, 100, 0.1)",
                       transform: "translateX(5px)",
                     },
+                    // ✅ Mobile: Adjust padding and spacing
+                    ...(isMobile && {
+                      mb: 2,
+                      p: 1.5,
+                    }),
                   }}
                 >
                   <Box
@@ -202,6 +231,12 @@ const ContactSection = () => {
                       backgroundColor: "rgba(76, 217, 100, 0.1)",
                       color: "primary.main",
                       mr: 3,
+                      // ✅ Mobile: Slightly smaller icon container
+                      ...(isMobile && {
+                        width: 45,
+                        height: 45,
+                        mr: 2,
+                      }),
                     }}
                   >
                     <Phone />
@@ -216,7 +251,7 @@ const ContactSection = () => {
                       underline="none"
                       sx={{
                         display: "block",
-                        fontSize: "1.2rem",
+                        fontSize: { xs: "1.1rem", md: "1.2rem" },
                         fontWeight: 700,
                         "&:hover": { color: "primary.main" },
                       }}
@@ -225,8 +260,6 @@ const ContactSection = () => {
                     </Link>
                   </Box>
                 </Box>
-
-
 
                 {/* EMAIL */}
                 <Box
@@ -242,6 +275,11 @@ const ContactSection = () => {
                       backgroundColor: "rgba(74, 144, 226, 0.1)",
                       transform: "translateX(5px)",
                     },
+                    // ✅ Mobile: Adjust padding and spacing
+                    ...(isMobile && {
+                      mb: 2,
+                      p: 1.5,
+                    }),
                   }}
                 >
                   <Box
@@ -255,6 +293,12 @@ const ContactSection = () => {
                       backgroundColor: "rgba(74, 144, 226, 0.1)",
                       color: "secondary.main",
                       mr: 3,
+                      // ✅ Mobile: Slightly smaller icon container
+                      ...(isMobile && {
+                        width: 45,
+                        height: 45,
+                        mr: 2,
+                      }),
                     }}
                   >
                     <Email />
@@ -269,7 +313,7 @@ const ContactSection = () => {
                       underline="none"
                       sx={{
                         display: "block",
-                        fontSize: "1.2rem",
+                        fontSize: { xs: "1rem", md: "1.2rem" },
                         fontWeight: 700,
                         "&:hover": { color: "secondary.main" },
                       }}
@@ -292,6 +336,10 @@ const ContactSection = () => {
                       backgroundColor: "rgba(155, 89, 182, 0.1)",
                       transform: "translateX(5px)",
                     },
+                    // ✅ Mobile: Adjust padding and spacing
+                    ...(isMobile && {
+                      p: 1.5,
+                    }),
                   }}
                 >
                   <Box
@@ -306,6 +354,12 @@ const ContactSection = () => {
                       color: "#9B59B6",
                       mr: 3,
                       mt: 0.5,
+                      // ✅ Mobile: Slightly smaller icon container
+                      ...(isMobile && {
+                        width: 45,
+                        height: 45,
+                        mr: 2,
+                      }),
                     }}
                   >
                     <LocationOn />
@@ -314,7 +368,11 @@ const ContactSection = () => {
                     <Typography variant="caption" color="text.secondary" fontWeight={600}>
                       ADDRESS
                     </Typography>
-                    <Typography sx={{ fontSize: "1.1rem", fontWeight: 600, lineHeight: 1.5 }}>
+                    <Typography sx={{ 
+                      fontSize: { xs: "1rem", md: "1.1rem" }, 
+                      fontWeight: 600, 
+                      lineHeight: 1.5 
+                    }}>
                       No. XX, Sample Road,
                       <br />
                       Kadawatha,
@@ -325,8 +383,6 @@ const ContactSection = () => {
                 </Box>
               </Box>
 
-
-
               {/* SOCIAL ICONS - Enhanced */}
               <Box>
                 <Typography variant="subtitle1" fontWeight={600} mb={2}>
@@ -336,7 +392,6 @@ const ContactSection = () => {
                   {[
                     { icon: <Facebook />, color: "#1877F2", href: "https://facebook.com/" },
                     { icon: <WhatsApp />, color: "#50e440ff", href: "https://wa.me/94112925437" },
-
                   ].map((social, idx) => (
                     <IconButton
                       key={idx}
@@ -354,6 +409,11 @@ const ContactSection = () => {
                           boxShadow: `0 5px 20px ${social.color}40`,
                         },
                         transition: "all 0.3s ease",
+                        // ✅ Mobile: Slightly smaller buttons
+                        ...(isMobile && {
+                          width: 40,
+                          height: 40,
+                        }),
                       }}
                     >
                       {social.icon}
@@ -380,6 +440,11 @@ const ContactSection = () => {
                       boxShadow: "0 12px 32px rgba(76, 217, 100, 0.4)",
                       transform: "translateY(-2px)",
                     },
+                    // ✅ Mobile: Full width button
+                    ...(isMobile && {
+                      width: "100%",
+                      px: 3,
+                    }),
                   }}
                   href="tel:+94112925437"
                 >
@@ -390,8 +455,6 @@ const ContactSection = () => {
           </Box>
         </Box>
       </motion.div>
-
-
     </Box>
   );
 };
